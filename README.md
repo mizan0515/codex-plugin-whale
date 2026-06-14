@@ -15,6 +15,15 @@ codex plugin add whale@whale-codex
 
 설치 후 새 Codex 대화를 열면 `@whale` 플러그인과 도구가 로드됩니다.
 
+## 실행 요구사항
+
+- 사용자의 PC에 NAVER Whale이 설치되어 있어야 합니다.
+- Codex 플러그인 런타임에서 `node` 명령을 실행할 수 있어야 합니다.
+- Windows에서는 `%LOCALAPPDATA%`, `%ProgramFiles%`, `%ProgramFiles(x86)%` 아래의 일반 웨일 설치 경로를 자동 탐지합니다.
+- macOS와 Linux는 일반 설치 후보 경로를 확인합니다.
+- 자동 탐지가 실패하면 `WHALE_EXECUTABLE` 환경 변수나 `--executable` 옵션으로 웨일 실행 파일을 직접 지정할 수 있습니다.
+- 브라우저 제어는 사용자의 로컬 PC에서 실행되며, 플러그인 게시자의 PC나 서버를 경유하지 않습니다.
+
 ## 할 수 있는 일
 
 - 이 컴퓨터에 설치된 네이버 웨일 실행 파일을 찾습니다.
