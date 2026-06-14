@@ -1,14 +1,16 @@
-# Sources
+# 출처
 
-Primary sources used for this plugin:
+## 웨일 개발 문서
 
-- NAVER Whale browser API: https://developers.whale.naver.com/api/
-- NAVER Whale developer repository: https://github.com/naver/whale-browser-developers
-- Chrome extension API reference for Chromium-compatible API behavior: https://developer.chrome.com/docs/extensions/reference/api
+- NAVER Whale 브라우저 API: https://developers.whale.naver.com/api/
+- NAVER Whale 개발자 문서 저장소: https://github.com/naver/whale-browser-developers
+- Chromium 호환 확장 API 참고: https://developer.chrome.com/docs/extensions/reference/api
 
-Local official app asset source used for plugin imagery:
+## 아이콘 출처
 
-- NAVER Whale for Windows installed application resources: `VisualElements/Logo.png`
-- NAVER Whale for Windows installed application resources: `VisualElements/SmallLogo.png`
+- Windows용 NAVER Whale 설치 리소스: `VisualElements/Logo.png`
+- Windows용 NAVER Whale 설치 리소스: `VisualElements/SmallLogo.png`
 
-Trademark note: NAVER Whale names and logos belong to NAVER or their respective rights holders. The Codex plugin package is independent unless published by NAVER.
+## 상표 메모
+
+NAVER Whale 이름, 로고, 관련 표장은 NAVER 또는 해당 권리자에게 있습니다. 이 Codex 플러그인은 NAVER가 직접 게시한 공식 제품이 아닌 독립 통합입니다.

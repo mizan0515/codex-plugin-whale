@@ -85,7 +85,7 @@ node <plugin root>\scripts\whale.mjs new-page --port 9223 --url https://develope
 ```powershell
 node <plugin root>\scripts\whale.mjs api-probe --port 9223 --target <targetId>
 node <plugin root>\scripts\whale.mjs open-special --port 9223 --target <targetId> --url https://m.naver.com/ --kind whale-mobile
-node <plugin root>\scripts\whale.mjs sidebar-show --port 9223 --extension-name "Whale Sidebar Codex Sample"
+node <plugin root>\scripts\whale.mjs sidebar-show --port 9223 --extension-name "웨일 사이드바 Codex 샘플"
 ```
 
 ## 웨일 전용 지식

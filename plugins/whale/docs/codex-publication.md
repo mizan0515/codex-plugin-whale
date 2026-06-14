@@ -1,31 +1,45 @@
-# Codex Plugin Store Publication Notes
+# Codex 플러그인 공개 배포 메모
 
-This bundle is structured for public Codex plugin submission:
+이 번들은 공개 Codex 플러그인 제출과 GitHub marketplace 배포를 모두 염두에 둔 구조입니다.
 
-- `.codex-plugin/plugin.json` is present and validates.
-- `skills` points at `./skills/`.
-- `mcpServers` points at `./.mcp.json`.
-- assets referenced by the manifest exist inside the plugin.
-- the plugin includes a README, safety notes, troubleshooting, API map, MCP server, CLI, and sample extension.
+## 포함 항목
 
-## Before Publishing From A Real Repository
+- `.codex-plugin/plugin.json` manifest
+- manifest에서 참조하는 로고와 composer 아이콘
+- README, 안전 가이드, 문제 해결, 웨일 API map, MCP 서버, CLI, 샘플 확장앱
+- 공개 저장소에서 바로 설치할 수 있는 `marketplace.json`
 
-Update these fields in `.codex-plugin/plugin.json` when the public source repository and project policies exist:
+## 게시자와 출처 표기
 
-- `repository`: HTTPS URL for the public source repository.
-- `interface.privacyPolicyURL`: HTTPS URL for the plugin publisher's privacy policy, if the marketplace requires it.
-- `interface.termsOfServiceURL`: HTTPS URL for the plugin publisher's terms, if the marketplace requires it.
+`plugin.json`의 `author`, `repository`, `homepage` 값은 이 플러그인 게시자와 저장소를 가리켜야 합니다. NAVER가 직접 게시한 플러그인이 아니므로 게시자 필드를 NAVER처럼 보이게 작성하면 안 됩니다.
 
-Do not point those fields at unrelated NAVER documentation unless NAVER is the actual publisher of the Codex plugin.
+NAVER 문서는 참고 출처로 링크합니다.
 
-## Local Validation Commands
+- https://developers.whale.naver.com/api/
+- https://github.com/naver/whale-browser-developers
+
+## 로고와 상표
+
+플러그인 아이콘은 Windows용 NAVER Whale 설치 리소스에서 생성했습니다. NAVER Whale 이름, 로고, 관련 표장은 NAVER 또는 해당 권리자에게 있습니다. 이 저장소는 독립 Codex 통합입니다.
+
+## 로컬 marketplace 항목
+
+저장소의 `.agents/plugins/marketplace.json`은 Codex에서 공개 GitHub marketplace로 설치하기 위한 항목입니다.
 
 ```powershell
-python <plugin-creator-skill-root>\scripts\validate_plugin.py <path-to-plugin>
-node <path-to-plugin>\scripts\validate-whale-plugin.mjs <path-to-plugin>
-node <path-to-plugin>\scripts\whale.mjs detect
+codex plugin marketplace add https://github.com/mizan0515/codex-plugin-whale.git
+codex plugin add whale@whale-codex
 ```
 
-## Local Marketplace Entry
+## 공개 전 점검
 
-This task also generated `outputs/marketplace.json` for local inspection in Codex. It is a test marketplace entry, not a claim that the plugin is already accepted by a public marketplace.
+배포 전에는 다음을 모두 실행합니다.
+
+```powershell
+python <plugin-creator>\scripts\validate_plugin.py .\plugins\whale
+node .\plugins\whale\scripts\validate-whale-plugin.mjs .\plugins\whale
+node .\scripts\check-whale-docs.mjs --check
+git diff --check
+```
+
+문서 감시 워크플로우는 웨일 개발자 문서가 바뀌면 GitHub issue를 자동 생성합니다. 관리자가 직접 변경점을 찾거나 티켓을 만들 필요가 없도록 하기 위한 장치입니다.

@@ -1,67 +1,69 @@
 # NAVER Whale API Map
 
-Source basis: NAVER Whale browser API documentation at https://developers.whale.naver.com/api/.
+기준 문서: https://developers.whale.naver.com/api/
 
-## Compatibility Model
+이 문서는 Codex 플러그인이 웨일 확장앱과 웨일 전용 Web API를 다룰 때 필요한 범위를 요약합니다. 상세한 매개변수와 최신 제약은 NAVER 공식 문서를 우선합니다.
 
-Whale supports browser-compatible extension APIs and most Chrome extension APIs. NAVER documents that Whale supports both the `whale.*` namespace and the `chrome.*` namespace, so many existing Chrome extensions can run without changes when they do not depend on Google-service-specific APIs.
+## 호환성 모델
 
-## Extension API Inventory
+웨일은 브라우저 호환 확장앱 API 규격과 대부분의 Chrome 확장 API를 지원합니다. NAVER 문서에 따르면 `whale.*` 네임스페이스뿐 아니라 `chrome.*` 네임스페이스도 지원하므로, Google 서비스 전용 API에 의존하지 않는 많은 Chrome 확장앱은 큰 수정 없이 웨일에서 동작할 수 있습니다.
 
-| API | Category | Whale difference |
+## 확장앱 API 목록
+
+| API | 분류 | 웨일 차이 |
 | --- | --- | --- |
-| `whale.alarms` | service | Same as Chrome |
-| `whale.bookmarks` | browser | Same as Chrome |
-| `whale.action` | UI | Same as Chrome; cannot be used with `sidebar_action` |
-| `whale.browsingData` | settings | Same as Chrome |
-| `whale.commands` | settings | Same as Chrome |
-| `whale.contentSettings` | settings | Same as Chrome |
-| `whale.contextMenus` | UI | Same as Chrome |
-| `whale.cookies` | service | Same as Chrome |
-| `whale.debugger` | DevTools | Same as Chrome |
-| `whale.declarativeContent` | service | Same as Chrome |
-| `whale.declarativeNetRequest` | service | Same as Chrome |
-| `whale.desktopCapture` | capture | Same as Chrome |
-| `whale.devtools.inspectedWindow` | DevTools | Same as Chrome |
-| `whale.devtools.network` | DevTools | Same as Chrome |
-| `whale.devtools.panels` | DevTools | Same as Chrome |
-| `whale.devtools.recorder` | DevTools | Same as Chrome |
-| `whale.downloads` | browser | Same as Chrome |
-| `whale.events` | data type | Same as Chrome |
-| `whale.extension` | extension | Same as Chrome |
-| `whale.fontSettings` | settings | Same as Chrome |
-| `whale.history` | browser | Same as Chrome |
-| `whale.i18n` | utility | Same as Chrome |
-| `whale.identity` | service | Partially supported; Whale documents `launchWebAuthFlow()` only |
-| `whale.idle` | service | Same as Chrome |
-| `whale.management` | extension | Same as Chrome |
-| `whale.notifications` | UI | Same as Chrome |
-| `whale.offscreen` | utility | Same as Chrome |
-| `whale.omnibox` | UI | Same as Chrome |
-| `whale.pageCapture` | capture | Same as Chrome |
-| `whale.permissions` | extension | Same as Chrome |
-| `whale.power` | settings | Same as Chrome |
-| `whale.privacy` | settings | Same as Chrome |
-| `whale.proxy` | settings | Same as Chrome |
-| `whale.runtime` | extension | Same as Chrome |
-| `whale.scripting` | utility | Same as Chrome |
-| `whale.sessions` | service | Unsupported in Whale |
-| `whale.storage` | service | Same as Chrome |
-| `whale.system.cpu` | system | Same as Chrome |
-| `whale.system.memory` | system | Same as Chrome |
-| `whale.system.storage` | system | Same as Chrome |
-| `whale.tabCapture` | tab/window | Same as Chrome |
-| `whale.tabs` | tab/window | Same as Chrome |
-| `whale.topSites` | browser | Adds delete, update, and search methods |
-| `whale.types` | data type | Same as Chrome |
-| `whale.webNavigation` | network | Same as Chrome |
-| `whale.webRequest` | network | Same as Chrome |
-| `whale.windows` | tab/window | Same as Chrome |
-| `whale.sidebarAction` | UI | Whale-specific |
+| `whale.alarms` | 서비스 | Chrome과 동일 |
+| `whale.bookmarks` | 브라우저 기능 | Chrome과 동일 |
+| `whale.action` | UI | Chrome과 동일, `sidebar_action`과 함께 사용 불가 |
+| `whale.browsingData` | 설정 | Chrome과 동일 |
+| `whale.commands` | 설정 | Chrome과 동일 |
+| `whale.contentSettings` | 설정 | Chrome과 동일 |
+| `whale.contextMenus` | UI | Chrome과 동일 |
+| `whale.cookies` | 서비스 | Chrome과 동일 |
+| `whale.debugger` | 개발자도구 | Chrome과 동일 |
+| `whale.declarativeContent` | 서비스 | Chrome과 동일 |
+| `whale.declarativeNetRequest` | 서비스 | Chrome과 동일 |
+| `whale.desktopCapture` | 캡처 | Chrome과 동일 |
+| `whale.devtools.inspectedWindow` | 개발자도구 | Chrome과 동일 |
+| `whale.devtools.network` | 개발자도구 | Chrome과 동일 |
+| `whale.devtools.panels` | 개발자도구 | Chrome과 동일 |
+| `whale.devtools.recorder` | 개발자도구 | Chrome과 동일 |
+| `whale.downloads` | 브라우저 기능 | Chrome과 동일 |
+| `whale.events` | 자료형 | Chrome과 동일 |
+| `whale.extension` | 확장앱 | Chrome과 동일 |
+| `whale.fontSettings` | 설정 | Chrome과 동일 |
+| `whale.history` | 브라우저 기능 | Chrome과 동일 |
+| `whale.i18n` | 유틸리티 | Chrome과 동일 |
+| `whale.identity` | 서비스 | 부분 지원, `launchWebAuthFlow()` 문서화 |
+| `whale.idle` | 서비스 | Chrome과 동일 |
+| `whale.management` | 확장앱 | Chrome과 동일 |
+| `whale.notifications` | UI | Chrome과 동일 |
+| `whale.offscreen` | 유틸리티 | Chrome과 동일 |
+| `whale.omnibox` | UI | Chrome과 동일 |
+| `whale.pageCapture` | 캡처 | Chrome과 동일 |
+| `whale.permissions` | 확장앱 | Chrome과 동일 |
+| `whale.power` | 설정 | Chrome과 동일 |
+| `whale.privacy` | 설정 | Chrome과 동일 |
+| `whale.proxy` | 설정 | Chrome과 동일 |
+| `whale.runtime` | 확장앱 | Chrome과 동일 |
+| `whale.scripting` | 유틸리티 | Chrome과 동일 |
+| `whale.sessions` | 서비스 | 웨일에서 지원되지 않음 |
+| `whale.storage` | 서비스 | Chrome과 동일 |
+| `whale.system.cpu` | 시스템 | Chrome과 동일 |
+| `whale.system.memory` | 시스템 | Chrome과 동일 |
+| `whale.system.storage` | 시스템 | Chrome과 동일 |
+| `whale.tabCapture` | 탭/창 | Chrome과 동일 |
+| `whale.tabs` | 탭/창 | Chrome과 동일 |
+| `whale.topSites` | 브라우저 기능 | 삭제, 수정, 검색 메소드 추가 제공 |
+| `whale.types` | 자료형 | Chrome과 동일 |
+| `whale.webNavigation` | 네트워크 | Chrome과 동일 |
+| `whale.webRequest` | 네트워크 | Chrome과 동일 |
+| `whale.windows` | 탭/창 | Chrome과 동일 |
+| `whale.sidebarAction` | UI | 웨일 전용 |
 
-## Manifest Keys
+## Manifest key
 
-Whale extension manifests use Manifest V3. Store submission requires at least:
+웨일 확장앱은 Manifest V3를 사용합니다. 스토어 제출에 필요한 최소 항목은 아래와 같습니다.
 
 - `manifest_version: 3`
 - `name`
@@ -69,78 +71,81 @@ Whale extension manifests use Manifest V3. Store submission requires at least:
 - `description`
 - `icons`
 
-Whale-specific or important keys:
+웨일 전용이거나 중요도가 높은 key:
 
-- `minimum_whale_version`: oldest compatible Whale version. Users below that version see an incompatibility warning and cannot install/update.
-- `sidebar_action`: defines a Whale sidebar app. Cannot be combined with `action`.
-- `action`: defines a toolbar button. Cannot be combined with `sidebar_action`.
-- `default_locale`: required for internationalized extensions and invalid when locale files are absent.
-- `host_permissions` and `optional_host_permissions`: URL match patterns shown to users as host access.
-- `permissions` and `optional_permissions`: extension API permissions.
+- `minimum_whale_version`: 호환되는 가장 낮은 웨일 버전입니다. 낮은 버전 사용자에게는 설치나 업데이트가 막힐 수 있습니다.
+- `sidebar_action`: 웨일 사이드바앱을 정의합니다. `action`과 함께 사용할 수 없습니다.
+- `action`: 툴바 버튼을 정의합니다. `sidebar_action`과 함께 사용할 수 없습니다.
+- `default_locale`: 다국어 확장앱에 필요하며, locale 파일이 없을 때 넣으면 오류가 됩니다.
+- `host_permissions`, `optional_host_permissions`: 사용자에게 표시되는 사이트 접근 권한입니다.
+- `permissions`, `optional_permissions`: 확장 API 권한입니다.
 
 ## `sidebar_action`
 
-`sidebar_action` creates a Whale sidebar app whose button appears in Whale's sidebar rather than the toolbar.
+`sidebar_action`은 툴바가 아니라 웨일 사이드바 영역에 버튼과 페이지를 표시하는 웨일 전용 manifest key입니다.
 
-Required fields:
+필수 필드:
 
-- `default_page`: local HTML page shown in the sidebar. Remote URLs are not allowed.
-- `default_icon`: icon path map.
+- `default_page`: 사이드바에 표시할 확장앱 내부 HTML 파일입니다. 원격 URL은 허용되지 않습니다.
+- `default_icon`: 아이콘 경로 map입니다.
 
-Optional fields:
+선택 필드:
 
-- `default_title`: tooltip text.
-- `use_navigation_bar`: whether to show the bottom navigation bar. Default is `true`.
-- `mobile_user_agent`: whether to use a mobile user agent. Default is `true`.
+- `default_title`: tooltip 텍스트입니다.
+- `use_navigation_bar`: 하단 탐색 바 표시 여부입니다. 기본값은 `true`입니다.
+- `mobile_user_agent`: 모바일 user agent 사용 여부입니다. 기본값은 `true`입니다.
 
-Important notes:
+주의사항:
 
-- Sidebar width is user-adjustable. NAVER documents a default around 390 px and a maximum around 590 px.
-- The sidebar may be on the left or right depending on user settings.
-- Design sidebar UI as responsive and narrow.
+- 사이드바 폭은 사용자가 조절할 수 있습니다. NAVER 문서는 기본 약 390 px, 최대 약 590 px 폭을 안내합니다.
+- 사용자의 설정에 따라 사이드바는 왼쪽이나 오른쪽에 있을 수 있습니다.
+- UI는 좁은 폭에서도 사용할 수 있게 반응형으로 설계합니다.
 
-## `whale.sidebarAction` Methods
+## `whale.sidebarAction` 메소드
 
-- `show(windowId?, details?, callback?)`: open/focus the sidebar. `details.url` can load a page URL; `details.reload` can force reload when URL matches.
-- `hide(windowId?, callback?)`: close the sidebar when the extension has focus.
-- `setTitle(details)`: set tooltip text across windows.
-- `getTitle(callback)`: read tooltip text.
-- `setIcon(details)`: set sidebar icon across windows.
-- `setPage(details)`: set the local page loaded on click; empty string shows an empty sidebar.
-- `getPage(callback)`: read the configured page.
-- `setBadgeText(details)`: set sidebar badge text.
-- `getBadgeText(callback)`: read sidebar badge text.
-- `setBadgeBackgroundColor(details)`: set badge color as hex or RGBA array.
-- `getBadgeBackgroundColor(callback)`: read badge color.
-- `dock(windowId, details?, callback)`: dock a popup window or tab into the sidebar.
-- `undock(parentWindowId, callback)`: restore a docked window/tab. Modern callback result is an object containing `popupId` and/or `tabId`.
+- `show(windowId?, details?, callback?)`: 사이드바를 열거나 포커스합니다. `details.url`로 페이지 URL을 지정할 수 있고, `details.reload`로 같은 URL도 다시 로드할 수 있습니다.
+- `hide(windowId?, callback?)`: 확장앱에 포커스가 있을 때 사이드바를 닫습니다.
+- `setTitle(details)`: window 전반의 tooltip 텍스트를 설정합니다.
+- `getTitle(callback)`: tooltip 텍스트를 읽습니다.
+- `setIcon(details)`: 사이드바 아이콘을 설정합니다.
+- `setPage(details)`: 클릭 시 로드할 로컬 페이지를 설정합니다. 빈 문자열은 빈 사이드바를 의미합니다.
+- `getPage(callback)`: 설정된 페이지를 읽습니다.
+- `setBadgeText(details)`: 사이드바 배지 텍스트를 설정합니다.
+- `getBadgeText(callback)`: 사이드바 배지 텍스트를 읽습니다.
+- `setBadgeBackgroundColor(details)`: 배지 색상을 hex 또는 RGBA 배열로 설정합니다.
+- `getBadgeBackgroundColor(callback)`: 배지 색상을 읽습니다.
+- `dock(windowId, details?, callback)`: popup 창이나 탭을 사이드바로 dock합니다.
+- `undock(parentWindowId, callback)`: dock된 창이나 탭을 되돌립니다. 최신 callback 결과는 `popupId` 또는 `tabId`를 포함한 객체입니다.
 
-## `whale.sidebarAction` Event
+## `whale.sidebarAction` 이벤트
 
-- `onClicked`: fires when the sidebar app icon is clicked. Callback receives `windowId` and `opened`.
+- `onClicked`: 사이드바앱 아이콘을 클릭했을 때 발생합니다. callback은 `windowId`와 `opened` 상태를 받습니다.
 
-## Whale Web API Targets
+## 웨일 Web API target
 
-Whale extends standard links through `rel` values:
+웨일은 표준 링크에 `rel` 값을 추가해 전용 창 target을 엽니다.
 
-- `whale-sidebar`: open in a sidebar panel.
-- `whale-space`: open in Whale Space.
-- `whale-mobile`: open in a new mobile window.
-- `web-app`: open in a web app window.
+- `whale-sidebar`: 사이드바 패널로 열기
+- `whale-space`: 웨일 스페이스로 열기
+- `whale-mobile`: 새 모바일 창으로 열기
+- `web-app`: 웹 앱 창으로 열기
 
-JavaScript can request the same behavior through the third `window.open()` argument:
+JavaScript에서는 `window.open()`의 세 번째 인자로 같은 동작을 요청합니다.
 
 ```js
 window.open("https://m.naver.com/", "_blank", "whale-mobile");
 ```
 
-If multiple Whale targets are present, NAVER documents priority as:
+target 값이 여러 개 있으면 NAVER 문서의 우선순위는 아래와 같습니다.
 
 ```text
 whale-space > whale-sidebar > whale-mobile > web-app
 ```
 
-## Content Script Constraint
+## 콘텐츠 스크립트 제약
 
-Content scripts can access only a limited subset of extension APIs. If an API is declared in `permissions` but appears undefined in a content script, move the call to the service worker, extension page, popup, or sidebar page and communicate by message passing.
+콘텐츠 스크립트는 제한된 일부 확장 API만 사용할 수 있습니다. `permissions`에 선언했는데도 API가 undefined로 보이면 서비스 워커, 확장앱 페이지, popup, 사이드바 페이지로 호출 위치를 옮기고 message passing으로 연결합니다.
 
+## 문서 갱신 처리
+
+이 저장소는 `scripts/check-whale-docs.mjs`와 GitHub Actions로 NAVER Whale API 문서를 정기 확인합니다. 해시가 바뀌면 `docs-sync` issue가 자동 생성되며, issue 본문에 바뀐 URL과 갱신 명령이 들어갑니다.

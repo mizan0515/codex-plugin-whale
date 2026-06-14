@@ -1,4 +1,4 @@
-name: Check Whale API docs
+name: NAVER Whale API 문서 확인
 
 on:
   schedule:
@@ -13,15 +13,15 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
+      - name: 저장소 체크아웃
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: Node.js 설정
         uses: actions/setup-node@v4
         with:
           node-version: "22"
 
-      - name: Check NAVER Whale API docs snapshot
+      - name: NAVER Whale API 문서 snapshot 확인
         id: whale-docs
         run: |
           set +e
@@ -30,7 +30,7 @@ jobs:
           echo "status=$status" >> "$GITHUB_OUTPUT"
           exit 0
 
-      - name: Create or update docs-change issue
+      - name: 문서 변경 issue 생성 또는 갱신
         if: steps.whale-docs.outputs.status != '0'
         uses: actions/github-script@v7
         with:
@@ -38,7 +38,7 @@ jobs:
             const fs = require("fs");
             const body = fs.readFileSync("whale-docs-change.md", "utf8");
             const marker = "<!-- whale-api-docs-change -->";
-            const title = "NAVER Whale API docs changed";
+            const title = "NAVER Whale API 문서 변경 감지";
             const { owner, repo } = context.repo;
             const existing = await github.rest.issues.listForRepo({
               owner,
@@ -64,6 +64,6 @@ jobs:
               });
             }
 
-      - name: Fail when docs changed
+      - name: 문서 변경 시 실패 처리
         if: steps.whale-docs.outputs.status != '0'
         run: exit 1

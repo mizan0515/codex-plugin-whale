@@ -28,7 +28,7 @@ node .\scripts\whale.mjs detect
 node .\scripts\whale.mjs launch --port 9223 --load-extension .\samples\whale-sidebar-extension --disable-extensions-except .\samples\whale-sidebar-extension
 node .\scripts\whale.mjs new-page --url https://developers.whale.naver.com/api/
 node .\scripts\whale.mjs list
-node .\scripts\whale.mjs sidebar-show --extension-name "Whale Sidebar Codex Sample"
+node .\scripts\whale.mjs sidebar-show --extension-name "웨일 사이드바 Codex 샘플"
 ```
 
 ## 구성 파일

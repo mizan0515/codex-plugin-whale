@@ -6,7 +6,7 @@
         "./mcp/server.bundle.mjs"
       ],
       "cwd": ".",
-      "note": "Local stdio MCP server for NAVER Whale automation through Chromium DevTools Protocol."
+      "note": "Chromium DevTools Protocol로 네이버 웨일을 자동화하는 로컬 stdio MCP 서버입니다."
     }
   }
 }

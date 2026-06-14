@@ -95,7 +95,7 @@ async function run(name, options) {
       requireOption(options, "kind");
       return openSpecialTarget(options.target, options.url, options.kind, cdp);
     case "sidebar-show":
-      return showSidebarAction(options["extension-name"] ?? "Whale Sidebar Codex Sample", { ...cdp, pagePath: options.page ?? "sidebar.html" });
+      return showSidebarAction(options["extension-name"] ?? "웨일 사이드바 Codex 샘플", { ...cdp, pagePath: options.page ?? "sidebar.html" });
     case "validate-extension":
       requireOption(options, "extension");
       return validateExtensionManifest(options.extension);
@@ -126,7 +126,7 @@ function requireOption(options, key) {
 }
 
 function usage() {
-  return `Whale Codex plugin CLI
+  return `Whale Codex 플러그인 CLI
 
 Commands:
   detect
@@ -144,7 +144,7 @@ Commands:
   screenshot --port 9223 --target targetId --out .\\whale.png [--full-page]
   api-probe --port 9223 --target targetId
   open-special --port 9223 --target targetId --url url --kind whale-sidebar|whale-space|whale-mobile|web-app
-  sidebar-show --port 9223 [--extension-name "Whale Sidebar Codex Sample"] [--page sidebar.html]
+  sidebar-show --port 9223 [--extension-name "웨일 사이드바 Codex 샘플"] [--page sidebar.html]
   validate-extension --extension path
 `;
 }

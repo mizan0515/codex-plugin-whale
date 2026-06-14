@@ -33,7 +33,7 @@ $plugin = ".\plugins\whale"
 $sample = Join-Path $plugin "samples\whale-sidebar-extension"
 node "$plugin\scripts\whale.mjs" detect
 node "$plugin\scripts\whale.mjs" launch --port 9223 --load-extension $sample --disable-extensions-except $sample
-node "$plugin\scripts\whale.mjs" sidebar-show --port 9223 --extension-name "Whale Sidebar Codex Sample"
+node "$plugin\scripts\whale.mjs" sidebar-show --port 9223 --extension-name "웨일 사이드바 Codex 샘플"
 ```
 
 정상이라면 마지막 결과에 아래 값이 보입니다.
@@ -65,7 +65,8 @@ plugins/whale/samples/whale-sidebar-extension/
 - 감시 대상: `https://developers.whale.naver.com/api/` 아래 API 문서
 - 실행 주기: 매일 1회, 수동 실행 가능
 - 문서 변경 감지 시: GitHub issue를 자동 생성 또는 기존 issue에 댓글 추가
-- 담당자가 할 일: 생성된 issue를 보고 `plugins/whale/docs/whale-api.md`, skill, 샘플 확장앱, 검사 스크립트를 함께 갱신
+- 자동 이슈 내용: 바뀐 문서 URL, 이전 해시, 새 해시, 로컬 갱신 명령
+- Codex가 처리할 일: 생성된 issue를 기준으로 `plugins/whale/docs/whale-api.md`, skill, 샘플 확장앱, 검사 스크립트를 함께 갱신
 
 수동 확인:
 

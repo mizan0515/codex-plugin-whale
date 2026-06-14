@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Whale Sidebar Codex Sample",
+  "name": "웨일 사이드바 Codex 샘플",
   "version": "0.1.0",
-  "description": "Sample NAVER Whale sidebar extension for the Whale Codex plugin.",
+  "description": "Whale Codex 플러그인용 네이버 웨일 사이드바 확장앱 샘플입니다.",
   "minimum_whale_version": "3",
   "icons": {
     "16": "icons/icon16.png",
@@ -21,7 +21,7 @@
       "16": "icons/icon16.png",
       "48": "icons/icon48.png"
     },
-    "default_title": "Codex Whale Sample",
+    "default_title": "Codex 웨일 샘플",
     "use_navigation_bar": true,
     "mobile_user_agent": true
   }

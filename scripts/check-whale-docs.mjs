@@ -18,20 +18,20 @@ if (update) {
   writeJson(SNAPSHOT_PATH, current);
   console.log(`Updated Whale API docs snapshot: ${SNAPSHOT_PATH}`);
   console.log(`Pages: ${current.pages.length}`);
-  process.exit(0);
+  process.exitCode = 0;
+} else {
+  const previous = JSON.parse(readFileSync(SNAPSHOT_PATH, "utf8"));
+  const diff = compareSnapshots(previous, current);
+  if (diff.changed.length === 0 && diff.added.length === 0 && diff.removed.length === 0) {
+    console.log(`Whale API docs unchanged. Pages checked: ${current.pages.length}`);
+    process.exitCode = 0;
+  } else {
+    const report = renderReport(previous, current, diff);
+    writeFileSync(outputPath, report, "utf8");
+    console.error(report);
+    process.exitCode = 2;
+  }
 }
-
-const previous = JSON.parse(readFileSync(SNAPSHOT_PATH, "utf8"));
-const diff = compareSnapshots(previous, current);
-if (diff.changed.length === 0 && diff.added.length === 0 && diff.removed.length === 0) {
-  console.log(`Whale API docs unchanged. Pages checked: ${current.pages.length}`);
-  process.exit(0);
-}
-
-const report = renderReport(previous, current, diff);
-writeFileSync(outputPath, report, "utf8");
-console.error(report);
-process.exit(2);
 
 async function crawlWhaleApiDocs() {
   const queue = [...SEED_URLS];
@@ -73,7 +73,7 @@ async function crawlWhaleApiDocs() {
 async function fetchText(url) {
   const response = await fetch(url, {
     headers: {
-      "user-agent": "codex-plugin-whale-doc-monitor/0.1 (+https://github.com/mizan0515/codex-plugin-whale)",
+      "user-agent": "codex-plugin-whale-doc-monitor/0.1.3 (+https://github.com/mizan0515/codex-plugin-whale)",
       accept: "text/html,application/xhtml+xml",
     },
   });
@@ -142,36 +142,36 @@ function compareSnapshots(previous, current) {
 
 function renderReport(previous, current, diff) {
   const lines = [
-    "# Whale API docs changed",
+    "# NAVER Whale API 문서 변경 감지",
     "",
-    "NAVER Whale developer API docs changed compared with the committed snapshot.",
+    "커밋된 snapshot과 비교했을 때 NAVER Whale 개발자 API 문서가 바뀌었습니다.",
     "",
-    `Previous snapshot: ${previous.generatedAt}`,
-    `Current check: ${current.generatedAt}`,
+    `이전 snapshot: ${previous.generatedAt}`,
+    `현재 확인: ${current.generatedAt}`,
     "",
-    "## Changed pages",
+    "## 변경된 페이지",
     ...formatPages(diff.changed),
     "",
-    "## Added pages",
+    "## 추가된 페이지",
     ...formatPages(diff.added),
     "",
-    "## Removed pages",
+    "## 제거된 페이지",
     ...formatPages(diff.removed),
     "",
-    "## Required maintainer action",
+    "## Codex 처리 항목",
     "",
-    "1. Read the changed NAVER Whale docs pages.",
-    "2. Update `plugins/whale/docs/whale-api.md` and related skill/script behavior if needed.",
-    "3. Run `node scripts/check-whale-docs.mjs --update` after the docs have been reviewed.",
-    "4. Run plugin validation and publish a new release.",
+    "1. 변경된 NAVER Whale 문서 페이지를 읽습니다.",
+    "2. 필요한 경우 `plugins/whale/docs/whale-api.md`, skill, script 동작을 갱신합니다.",
+    "3. 검토 후 `node scripts/check-whale-docs.mjs --update`를 실행해 snapshot을 갱신합니다.",
+    "4. 플러그인 검증을 실행하고 새 release를 게시합니다.",
     "",
   ];
   return `${lines.join("\n")}\n`;
 }
 
 function formatPages(pages) {
-  if (pages.length === 0) return ["- None"];
-  return pages.map((page) => `- ${page.url} (${page.title || "untitled"})`);
+  if (pages.length === 0) return ["- 없음"];
+  return pages.map((page) => `- ${page.url} (${page.title || "제목 없음"})`);
 }
 
 function sha256(value) {
