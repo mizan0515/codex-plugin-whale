@@ -1,29 +1,32 @@
-# Codex Plugin for NAVER Whale
+# NAVER Whale용 Codex 플러그인
 
-Codex marketplace plugin for controlling and testing NAVER Whale from Codex.
+Codex에서 네이버 웨일 브라우저를 제어하고, 웨일 확장앱 API를 테스트하기 위한 공개 GitHub marketplace 플러그인입니다.
 
-This repository is a Codex plugin marketplace source. The plugin runs locally on the user's machine. It does not send browser-control traffic to this repository owner.
+이 플러그인은 **사용자 컴퓨터에서 로컬로 실행**됩니다. 웨일 탭 제어, 사이드바 테스트, 확장앱 검사는 각 사용자의 PC에서 처리되며, 이 저장소 소유자가 사용자 브라우저 트래픽을 중계하지 않습니다.
 
-## Install
+## 설치
+
+PowerShell에서 아래 두 줄을 실행하세요.
 
 ```powershell
 codex plugin marketplace add https://github.com/mizan0515/codex-plugin-whale.git
 codex plugin add whale@whale-codex
 ```
 
-Start a new Codex thread after installation so the new skill and MCP tools are loaded.
+설치 후 새 Codex 대화를 열면 `@whale` 플러그인과 도구가 로드됩니다.
 
-## What It Does
+## 할 수 있는 일
 
-- Detect common NAVER Whale executable paths.
-- Launch Whale with a remote debugging port and an isolated data directory by default.
-- List, open, navigate, read, click, type, and screenshot Whale tabs through Chromium DevTools Protocol.
-- Load and validate Whale Manifest V3 extensions.
-- Exercise Whale-specific browser surfaces such as sidebar, space, mobile window, and web-app link targets.
-- Call `whale.sidebarAction.show()` from a loaded Whale extension context.
-- Package Whale API notes, safety guidance, troubleshooting, and a sidebar extension sample.
+- 이 컴퓨터에 설치된 네이버 웨일 실행 파일을 찾습니다.
+- 기본적으로 별도 브라우저 데이터 폴더를 만들어 안전하게 웨일을 실행합니다.
+- 웨일 탭 열기, 이동, 읽기, 클릭, 입력, 스크린샷을 처리합니다.
+- 웨일 Manifest V3 확장앱을 검사합니다.
+- `sidebar_action` 기반 사이드바 확장앱 샘플을 제공합니다.
+- `whale.sidebarAction.show()`를 실제 웨일 확장앱 컨텍스트에서 호출합니다.
+- `whale-sidebar`, `whale-space`, `whale-mobile`, `web-app` 같은 웨일 전용 창 열기 방식을 테스트합니다.
+- 웨일 API 문서 요약, 안전 가이드, 문제 해결 문서, 배포 체크리스트를 포함합니다.
 
-## Quick Smoke Test
+## 빠른 실사용 테스트
 
 ```powershell
 $plugin = ".\plugins\whale"
@@ -33,7 +36,7 @@ node "$plugin\scripts\whale.mjs" launch --port 9223 --load-extension $sample --d
 node "$plugin\scripts\whale.mjs" sidebar-show --port 9223 --extension-name "Whale Sidebar Codex Sample"
 ```
 
-Successful sidebar output includes:
+정상이라면 마지막 결과에 아래 값이 보입니다.
 
 ```json
 {
@@ -42,7 +45,7 @@ Successful sidebar output includes:
 }
 ```
 
-## Repository Layout
+## 저장소 구조
 
 ```text
 .agents/plugins/marketplace.json
@@ -55,18 +58,48 @@ plugins/whale/docs/
 plugins/whale/samples/whale-sidebar-extension/
 ```
 
-## Safety
+## 웨일 공식 문서 갱신 대응
 
-By default, the plugin launches Whale with a separate data directory. Do not point it at a personal browser data directory unless you intentionally want Codex to access that session. The plugin instructions prohibit inspecting cookies, saved login data, session stores, private keys, credentials, or browser storage databases.
+웨일 API 문서는 시간이 지나면 바뀔 수 있습니다. 이 저장소는 GitHub Actions로 웨일 API 문서를 정기 확인합니다.
 
-## Trademark
+- 감시 대상: `https://developers.whale.naver.com/api/` 아래 API 문서
+- 실행 주기: 매일 1회, 수동 실행 가능
+- 문서 변경 감지 시: GitHub issue를 자동 생성 또는 기존 issue에 댓글 추가
+- 담당자가 할 일: 생성된 issue를 보고 `plugins/whale/docs/whale-api.md`, skill, 샘플 확장앱, 검사 스크립트를 함께 갱신
 
-NAVER Whale names, logos, and related marks belong to NAVER or their respective rights holders. This repository is an independent Codex integration and is not an official NAVER product unless NAVER publishes it.
+수동 확인:
 
-The included plugin icons are derived from NAVER Whale application resources installed with NAVER Whale for Windows.
+```powershell
+node .\scripts\check-whale-docs.mjs --check
+```
 
-## Sources
+현재 기준 스냅샷을 새로 저장:
 
-- NAVER Whale browser API: https://developers.whale.naver.com/api/
-- NAVER Whale website: https://whale.naver.com/
-- Codex plugin documentation: https://developers.openai.com/codex/plugins/build
+```powershell
+node .\scripts\check-whale-docs.mjs --update
+```
+
+## 안전 원칙
+
+기본 실행은 별도 브라우저 데이터 폴더를 사용합니다. 사용자가 명시적으로 원하지 않는 한 개인 웨일 세션을 대상으로 쓰지 마세요.
+
+플러그인 지침은 아래 항목을 읽지 않도록 제한합니다.
+
+- 쿠키
+- 저장된 로그인 정보
+- 세션 저장소
+- 개인 키
+- 인증 파일
+- 브라우저 저장소 데이터베이스
+
+## 상표와 로고
+
+NAVER Whale 이름, 로고, 관련 표장은 NAVER 또는 해당 권리자에게 있습니다. 이 저장소는 독립 Codex 통합이며, NAVER가 직접 게시한 공식 제품이 아닙니다.
+
+포함된 플러그인 아이콘은 Windows용 NAVER Whale 설치 패키지에 포함된 공식 애플리케이션 리소스에서 만들었습니다.
+
+## 출처
+
+- NAVER Whale 브라우저 API: https://developers.whale.naver.com/api/
+- NAVER Whale 웹사이트: https://whale.naver.com/
+- Codex 플러그인 문서: https://developers.openai.com/codex/plugins/build

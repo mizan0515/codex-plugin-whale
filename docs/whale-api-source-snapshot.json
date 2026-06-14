@@ -1,0 +1,51 @@
+{
+  "generatedAt": "2026-06-14T12:51:21.350Z",
+  "source": "NAVER Whale developer API docs",
+  "seedUrls": [
+    "https://developers.whale.naver.com/api/"
+  ],
+  "pages": [
+    {
+      "url": "https://developers.whale.naver.com/api/",
+      "title": "웨일 브라우저 API — 웨일 개발자센터",
+      "hash": "c27ee7b2808311387ab747626dee69ecd3a208e4b8705bd8ed737130c1519145",
+      "textLength": 17988
+    },
+    {
+      "url": "https://developers.whale.naver.com/api/extensions/",
+      "title": "확장앱 API — 웨일 개발자센터",
+      "hash": "672f9be8da0747384cc73f7c2771024951e20e15a8eaf591e09b1bd596bfa388",
+      "textLength": 4657
+    },
+    {
+      "url": "https://developers.whale.naver.com/api/extensions/manifest/",
+      "title": "매니페스트 — 웨일 개발자센터",
+      "hash": "ede468052a1b35d8d284c0a96a8b1d1635b16536597871e633ac4207f82ce5d7",
+      "textLength": 4801
+    },
+    {
+      "url": "https://developers.whale.naver.com/api/extensions/sidebarAction/",
+      "title": "whale.sidebarAction — 웨일 개발자센터",
+      "hash": "36823768b0a0b09015ab9c93494dcaf096eee3a4e282c298fee0820ac72fcdcf",
+      "textLength": 5973
+    },
+    {
+      "url": "https://developers.whale.naver.com/api/sidebarAction/",
+      "title": "Redirecting...",
+      "hash": "cd23991b4e02a17e5a224a1f8265c5a187ab366b40b8f8a14608371feb8f6e25",
+      "textLength": 14
+    },
+    {
+      "url": "https://developers.whale.naver.com/api/web/",
+      "title": "웹 API — 웨일 개발자센터",
+      "hash": "b968206bdd981d3f5f857a21c752e6fb1a586de2c4fb1430a84d6ba816cfd23b",
+      "textLength": 781
+    },
+    {
+      "url": "https://developers.whale.naver.com/api/web/window/",
+      "title": "창 열기 — 웨일 개발자센터",
+      "hash": "1db20940334072a7f715035b5d216514781ae0aa284af54183be48237f0cc265",
+      "textLength": 3444
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "name": "whale",
-  "version": "0.1.1",
-  "description": "Control NAVER Whale from Codex, with Chromium-compatible browser automation and Whale-specific extension API guidance.",
+  "version": "0.1.2",
+  "description": "Codex에서 네이버 웨일을 제어하고 웨일 확장앱 API를 테스트합니다.",
   "author": {
     "name": "mizan0515",
     "url": "https://github.com/mizan0515/codex-plugin-whale"
@@ -23,8 +23,8 @@
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "Whale",
-    "shortDescription": "Control NAVER Whale with Codex",
-    "longDescription": "Whale lets Codex connect to a NAVER Whale browser started with remote debugging, inspect tabs, navigate, read DOM text, run Chromium DevTools Protocol commands, capture screenshots, and exercise Whale-specific browser surfaces such as sidebar, space, mobile window, and web-app link targets. It also includes a Whale extension API map and a sidebar extension sample based on NAVER Whale developer documentation.",
+    "shortDescription": "Codex에서 네이버 웨일 제어",
+    "longDescription": "Whale 플러그인은 원격 디버깅 포트로 실행된 네이버 웨일에 Codex가 연결해 탭 확인, 페이지 이동, 본문 읽기, 클릭, 입력, 스크린샷, 웨일 전용 사이드바/스페이스/모바일창/web-app target 테스트를 수행하도록 돕습니다. 웨일 개발자 문서 기반 API map, 안전 가이드, 사이드바 확장앱 샘플도 포함합니다.",
     "developerName": "mizan0515",
     "category": "Developer Tools",
     "capabilities": [
@@ -34,9 +34,9 @@
     ],
     "websiteURL": "https://developers.whale.naver.com/api/",
     "defaultPrompt": [
-      "Open Whale and inspect the current tab",
-      "Test this site in NAVER Whale",
-      "Create a Whale sidebar extension"
+      "웨일을 열고 현재 탭을 검사해줘",
+      "이 사이트를 네이버 웨일에서 테스트해줘",
+      "웨일 사이드바 확장앱을 만들어줘"
     ],
     "brandColor": "#05C3DD",
     "composerIcon": "./assets/whale-composer.png",

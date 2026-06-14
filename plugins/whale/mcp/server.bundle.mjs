@@ -258,7 +258,7 @@ server.onRequest = async (request) => {
     return {
       protocolVersion: request.params?.protocolVersion ?? "2024-11-05",
       capabilities: { tools: {} },
-      serverInfo: { name: "whale", version: "0.1.1" },
+      serverInfo: { name: "whale", version: "0.1.2" },
     };
   }
   if (request.method === "tools/list") return { tools };

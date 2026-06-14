@@ -1,25 +1,27 @@
-# Whale Codex Plugin
+# Whale Codex 플러그인
 
-Control NAVER Whale from Codex through a public, local plugin bundle.
+Codex에서 네이버 웨일을 실제 브라우저로 열고 제어하기 위한 로컬 플러그인입니다.
 
-This plugin is modeled on the user-facing shape of the bundled Chrome plugin: it provides a browser-control skill, a local MCP server, packaged documentation, setup/troubleshooting guidance, and examples. The implementation is public-source friendly and does not copy OpenAI's proprietary Chrome extension host. It uses the Chromium DevTools Protocol exposed by Whale when Whale is started with remote debugging.
+이 플러그인은 번들 Chrome 플러그인의 사용자 경험을 참고하되, 공개 배포 가능한 방식으로 구현했습니다. OpenAI의 비공개 Chrome 확장 호스트를 복사하지 않고, 웨일이 원격 디버깅 포트로 공개하는 Chromium DevTools Protocol을 사용합니다.
 
-## What It Provides
+## 제공 기능
 
-- Detect common NAVER Whale executable locations on Windows, macOS, and Linux.
-- Launch Whale with `--remote-debugging-port` and an isolated default user-data directory.
-- Connect to an already debug-enabled Whale instance.
-- List tabs, open tabs, navigate, read page text, run JavaScript, click coordinates, type text, and capture screenshots through CDP.
-- Exercise Whale-specific targets: `whale-sidebar`, `whale-space`, `whale-mobile`, and `web-app`.
-- Probe the page for `window.whale`, `window.chrome`, user agent, and extension namespace availability.
-- Validate and scaffold Whale MV3 extensions, including `sidebar_action` samples.
-- Document Whale extension APIs, compatibility notes, manifest keys, sidebarAction methods/events, and public review requirements.
+- Windows, macOS, Linux의 일반적인 네이버 웨일 실행 파일 위치를 찾습니다.
+- `--remote-debugging-port`와 별도 브라우저 데이터 폴더로 웨일을 실행합니다.
+- 이미 디버깅 포트가 열린 웨일 인스턴스에 연결합니다.
+- 탭 목록 확인, 새 탭 열기, 페이지 이동, 본문 읽기, JavaScript 실행, 클릭, 입력, 스크린샷을 처리합니다.
+- 웨일 전용 target인 `whale-sidebar`, `whale-space`, `whale-mobile`, `web-app`을 테스트합니다.
+- 페이지에서 `window.whale`, `window.chrome`, user agent, 확장앱 네임스페이스를 확인합니다.
+- `sidebar_action` 샘플을 포함한 웨일 Manifest V3 확장앱을 검사합니다.
+- 웨일 확장앱 API, 호환성, manifest key, `whale.sidebarAction` 메소드/이벤트, 심사 체크리스트를 문서화합니다.
 
-## Important Limit
+## 중요한 제한
 
-Whale must be launched with remote debugging before Codex can control it through this public plugin. That is different from the bundled Chrome plugin's private extension bridge, which can interact with an installed Chrome extension host. For existing logged-in Whale sessions, start Whale yourself with remote debugging and only use a profile you intentionally want Codex to access.
+이 공개 플러그인은 웨일을 원격 디버깅 포트와 함께 실행해야 제어할 수 있습니다. 번들 Chrome 플러그인의 비공개 확장 브리지처럼 이미 열린 일반 브라우저 세션을 자동으로 잡는 구조가 아닙니다.
 
-## Quick Local Smoke Test
+로그인된 기존 웨일 세션을 쓰려면 사용자가 직접 의도한 데이터 폴더와 디버깅 포트를 지정해야 합니다. 기본값은 안전을 위해 별도 데이터 폴더를 사용합니다.
+
+## 빠른 로컬 테스트
 
 ```powershell
 node .\scripts\whale.mjs detect
@@ -29,29 +31,29 @@ node .\scripts\whale.mjs list
 node .\scripts\whale.mjs sidebar-show --extension-name "Whale Sidebar Codex Sample"
 ```
 
-## Plugin Contents
+## 구성 파일
 
-- `.codex-plugin/plugin.json`: Codex plugin manifest.
-- `.mcp.json`: Local MCP server registration.
-- `skills/control-whale/SKILL.md`: Runtime instructions Codex follows when `@whale` or Whale control is requested.
-- `mcp/server.bundle.mjs`: Dependency-free stdio MCP server.
-- `scripts/whale-client.mjs`: CDP client and Whale process helpers.
-- `scripts/whale.mjs`: Command-line wrapper for smoke testing.
-- `scripts/validate-whale-plugin.mjs`: Local bundle validation.
-- `docs/`: Whale API map, control guide, safety, troubleshooting, and store checklist.
-- `samples/whale-sidebar-extension/`: MV3 sidebar extension sample using Whale-specific APIs.
+- `.codex-plugin/plugin.json`: Codex 플러그인 manifest
+- `.mcp.json`: 로컬 MCP 서버 등록
+- `skills/control-whale/SKILL.md`: `@whale` 사용 시 Codex가 따르는 실행 지침
+- `mcp/server.bundle.mjs`: 외부 의존성 없는 stdio MCP 서버
+- `scripts/whale-client.mjs`: 웨일 실행/제어 helper
+- `scripts/whale.mjs`: 수동 테스트용 명령줄 도구
+- `scripts/validate-whale-plugin.mjs`: 플러그인 번들 검사
+- `docs/`: 웨일 API 요약, 제어 가이드, 안전 가이드, 문제 해결, 스토어 체크리스트
+- `samples/whale-sidebar-extension/`: 웨일 전용 API를 쓰는 MV3 사이드바 확장앱 샘플
 
-## Sources
+## 출처
 
-- NAVER Whale browser API: https://developers.whale.naver.com/api/
-- NAVER Whale developer docs repository: https://github.com/naver/whale-browser-developers
-- Chrome extension API reference for shared Chromium APIs: https://developer.chrome.com/docs/extensions/reference/api
+- NAVER Whale 브라우저 API: https://developers.whale.naver.com/api/
+- NAVER Whale 개발자 문서 저장소: https://github.com/naver/whale-browser-developers
+- 공통 Chromium 확장 API 참고: https://developer.chrome.com/docs/extensions/reference/api
 
-## Brand Assets
+## 브랜드 이미지
 
-Plugin icons and the sample extension icons are derived from the official NAVER Whale application images installed with NAVER Whale for Windows:
+플러그인 아이콘과 샘플 확장앱 아이콘은 Windows용 NAVER Whale 설치 리소스에서 만들었습니다.
 
 - `VisualElements/Logo.png`
 - `VisualElements/SmallLogo.png`
 
-NAVER Whale names, logos, and related marks belong to NAVER or their respective rights holders. This plugin is an independent Codex integration and is not an official NAVER product unless NAVER publishes it.
+NAVER Whale 이름, 로고, 관련 표장은 NAVER 또는 해당 권리자에게 있습니다. 이 플러그인은 독립 Codex 통합이며, NAVER가 직접 게시한 공식 제품이 아닙니다.
