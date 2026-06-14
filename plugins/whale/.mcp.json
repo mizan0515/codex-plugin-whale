@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "whale": {
+      "command": "node",
+      "args": [
+        "./mcp/server.bundle.mjs"
+      ],
+      "cwd": ".",
+      "note": "Local stdio MCP server for NAVER Whale automation through Chromium DevTools Protocol."
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "whale-codex",
+  "interface": {
+    "displayName": "Whale Codex"
+  },
+  "plugins": [
+    {
+      "name": "whale",
+      "source": {
+        "source": "local",
+        "path": "./plugins/whale"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}

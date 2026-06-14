@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Whale Sidebar Codex Sample",
+  "version": "0.1.0",
+  "description": "Sample NAVER Whale sidebar extension for the Whale Codex plugin.",
+  "minimum_whale_version": "3",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "sidebar_action": {
+    "default_page": "sidebar.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png"
+    },
+    "default_title": "Codex Whale Sample",
+    "use_navigation_bar": true,
+    "mobile_user_agent": true
+  }
+}

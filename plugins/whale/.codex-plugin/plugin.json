@@ -1,0 +1,46 @@
+{
+  "name": "whale",
+  "version": "0.1.1",
+  "description": "Control NAVER Whale from Codex, with Chromium-compatible browser automation and Whale-specific extension API guidance.",
+  "author": {
+    "name": "mizan0515",
+    "url": "https://github.com/mizan0515/codex-plugin-whale"
+  },
+  "homepage": "https://developers.whale.naver.com/api/",
+  "repository": "https://github.com/mizan0515/codex-plugin-whale",
+  "license": "MIT",
+  "keywords": [
+    "browser",
+    "whale",
+    "naver-whale",
+    "chromium",
+    "cdp",
+    "playwright",
+    "extension",
+    "sidebar"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Whale",
+    "shortDescription": "Control NAVER Whale with Codex",
+    "longDescription": "Whale lets Codex connect to a NAVER Whale browser started with remote debugging, inspect tabs, navigate, read DOM text, run Chromium DevTools Protocol commands, capture screenshots, and exercise Whale-specific browser surfaces such as sidebar, space, mobile window, and web-app link targets. It also includes a Whale extension API map and a sidebar extension sample based on NAVER Whale developer documentation.",
+    "developerName": "mizan0515",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://developers.whale.naver.com/api/",
+    "defaultPrompt": [
+      "Open Whale and inspect the current tab",
+      "Test this site in NAVER Whale",
+      "Create a Whale sidebar extension"
+    ],
+    "brandColor": "#05C3DD",
+    "composerIcon": "./assets/whale-composer.png",
+    "logo": "./assets/whale-logo.png",
+    "screenshots": []
+  }
+}
