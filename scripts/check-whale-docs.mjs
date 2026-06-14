@@ -73,7 +73,7 @@ async function crawlWhaleApiDocs() {
 async function fetchText(url) {
   const response = await fetch(url, {
     headers: {
-      "user-agent": "codex-plugin-whale-doc-monitor/0.1.3 (+https://github.com/mizan0515/codex-plugin-whale)",
+      "user-agent": "codex-plugin-whale-doc-monitor/0.1.4 (+https://github.com/mizan0515/codex-plugin-whale)",
       accept: "text/html,application/xhtml+xml",
     },
   });
